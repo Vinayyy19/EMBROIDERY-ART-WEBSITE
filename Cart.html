@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart - Stich Craft</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #cart-container {
+            padding: 40px 80px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            white-space: nowrap;
+        }
+
+        .cart-table thead {
+            border: 1px solid #e2e9e1;
+            border-left: none;
+            border-right: none;
+        }
+
+        .cart-table thead td {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            padding: 18px 0;
+        }
+
+        .cart-table tbody td {
+            padding-top: 15px;
+        }
+
+        .cart-table tbody img {
+            width: 70px;
+        }
+
+        .cart-table tbody td i {
+            color: #d8000c;
+            cursor: pointer;
+        }
+
+        .cart-summary {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .summary-box {
+            width: 45%;
+            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .summary-box h3 {
+            padding-bottom: 15px;
+        }
+
+        .summary-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .summary-box table td {
+            width: 50%;
+            border: 1px solid #e2e9e1;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .summary-box button {
+            background-color: #088178;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Confirmation Styling */
+        #checkout-confirmation {
+            display: none;
+            text-align: center;
+            padding: 100px 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: 40px auto;
+            max-width: 600px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        #checkout-confirmation i {
+            font-size: 80px;
+            color: #088178;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        #checkout-confirmation h2 {
+            font-size: 32px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        #checkout-confirmation p {
+            font-size: 18px;
+            color: #465b52;
+            margin-bottom: 30px;
+        }
+
+        #checkout-confirmation .delivery-notice {
+            color: #088178;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="inner-page">
+    <section id="header">
+        <a href="Index.html"><img src="IMAGE/CraftLogo.png" class="logo" alt=""></a>
+        <ul id="navbar">
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="Shop.html">Shop</a></li>
+            <li id="lg-bag"><a class="active" href="Cart.html"><i class="far fa-shopping-bag"></i></a></li>
+        </ul>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>#cart</h2>
+        <p>Review your gorgeous choices before checkout!</p>
+    </section>
+
+    <section id="cart-container">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <div class="summary-box">
+                <h3>Coupon</h3>
+                <input type="text" placeholder="Enter Your Coupon">
+                <button class="normal">Apply</button>
+            </div>
+            <div class="summary-box">
+                <h3>Cart Totals</h3>
+                <table>
+                    <tr>
+                        <td>Cart Subtotal</td>
+                        <td id="cart-subtotal">₹ 0</td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong id="cart-total">₹ 0</strong></td>
+                    </tr>
+                </table>
+                <button class="normal" onclick="processCheckout()">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <div id="checkout-confirmation">
+            <i class="fas fa-check-circle"></i>
+            <h2>Thank You for Your Order!</h2>
+            <p>Your beautiful embroidery art is being prepared for shipment.</p>
+            <p class="delivery-notice">Estimated Delivery: 2-3 Days</p>
+            <button class="normal" onclick="window.location.href='Shop.html'" style="margin-top: 20px;">Continue
+                Shopping</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="copyright">
+            <p>@2026, Stich Craft EMBROIDERY TRADITIONAL WORK</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', loadCartPage);
+
+        async function loadCartPage() {
+            try {
+                const res = await fetch('/api/cart');
+                if (res.status === 401) {
+                    window.location.href = 'Login.html';
+                    return;
+                }
+                const cart = await res.json();
+                const container = document.getElementById('cart-items');
+                let subtotal = 0;
+
+                container.innerHTML = cart.map(item => {
+                    const itemSubtotal = item.price * item.quantity;
+                    subtotal += itemSubtotal;
+                    return `
+                        <tr>
+                            <td><i class="far fa-times-circle" onclick="removeFromCart(${item.id})"></i></td>
+                            <td><img src="${item.image}" alt=""></td>
+                            <td>${item.name}</td>
+                            <td>₹ ${item.price}</td>
+                            <td>${item.quantity}</td>
+                            <td>₹ ${itemSubtotal}</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                document.getElementById('cart-subtotal').innerText = `₹ ${subtotal}`;
+                document.getElementById('cart-total').innerText = `₹ ${subtotal}`;
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function removeFromCart(productId) {
+            try {
+                const res = await fetch(`/api/cart/${productId}`, { method: 'DELETE' });
+                if (res.ok) {
+                    showNotification('Item removed from cart ✨');
+                    loadCartPage(); // Reload cart content
+                } else {
+                    const data = await res.json();
+                    showNotification(data.message || 'Failed to remove item.', 'error');
+                }
+            } catch (err) {
+                console.error('Error removing from cart:', err);
+                showNotification('Network error during removal.', 'error');
+            }
+        }
+    </script>
+</body>
+
+</html>

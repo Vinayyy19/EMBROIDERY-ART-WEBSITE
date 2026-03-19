@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stich Craft EMBROIDERY - PRODUCT</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Amazon Style Overrides */
+        #prodetails {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 5%;
+            background: #fff;
+            gap: 40px;
+        }
+
+        /* 3 Column Layout */
+        .product-gallery {
+            flex: 0 0 35%;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .product-info {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .buy-box {
+            flex: 0 0 280px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            background: #fff;
+        }
+
+        /* Gallery Styles */
+        #MainImg {
+            width: 100%;
+            border-radius: 4px;
+            cursor: zoom-in;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .small-img-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .small-img-col {
+            flex: 1;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+
+        .small-img-col:hover {
+            border-color: #e77600;
+            transform: translateY(-2px);
+        }
+
+        /* Info Styles */
+        .product-info h4 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            line-height: 1.2;
+            color: #0F1111;
+        }
+
+        .brand-link {
+            color: #007185;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .ratings {
+            color: #ffa41c;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ratings span {
+            color: #007185;
+        }
+
+        .price-row {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            margin: 20px 0;
+        }
+
+        .price-row h2 {
+            color: #B12704;
+            font-size: 28px;
+            font-weight: 400;
+        }
+
+        .coupon {
+            background: #E7F3F3;
+            color: #007185;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .about-item {
+            margin-top: 20px;
+        }
+
+        .about-item h5 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .about-item p {
+            font-size: 15px;
+            line-height: 22px;
+            color: #333;
+        }
+
+        /* Buy Box Styles */
+        .buy-box .price {
+            font-size: 24px;
+            color: #B12704;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .stock-status {
+            color: #007600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 500;
+        }
+
+        .buy-box select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #D5D9D9;
+            background: #F0F2F2;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(213, 217, 217, .5);
+        }
+
+        .btn-amazon {
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .btn-cart {
+            background: #FFD814;
+            color: #0F1111;
+            box-shadow: 0 2px 5px rgba(213, 217, 217, .5);
+        }
+
+        .btn-cart:hover {
+            background: #F7CA00;
+        }
+
+        .btn-buy {
+            background: #FFA41C;
+            color: #0F1111;
+        }
+
+        .btn-buy:hover {
+            background: #FA8900;
+        }
+
+        .policy-icons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .policy-item {
+            text-align: center;
+            font-size: 11px;
+            color: #007185;
+            flex: 1;
+        }
+
+        .policy-item i {
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: block;
+            color: #565959;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            #prodetails {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .product-gallery,
+            .product-info,
+            .buy-box {
+                flex: 1 1 100%;
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="inner-page">
+    <section id="header">
+        <a href="Index.html"><img src="IMAGE/CraftLogo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="Index.html">Home</a></li>
+                <li><a class="active" href="Shop.html">Shop</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Contect.html">Contact</a></li>
+                <li id="lg-bag"><a href="Cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="Cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="prodetails">
+        
+        <div class="product-gallery">
+            <img src="IMAGE/product1.jpg" id="MainImg" alt="">
+            <div class="small-img-group">
+                <div class="small-img-col">
+                    <img src="IMAGE/product1.jpg" width="100%" class="small-img" alt=""
+                        onclick="window.MainImg.src=this.src">
+                </div>
+                <div class="small-img-col">
+                    <img src="IMAGE/product2.jpg" width="100%" class="small-img" alt=""
+                        onclick="window.MainImg.src=this.src">
+                </div>
+                <div class="small-img-col">
+                    <img src="IMAGE/product3.jpg" width="100%" class="small-img" alt=""
+                        onclick="window.MainImg.src=this.src">
+                </div>
+                <div class="small-img-col">
+                    <img src="IMAGE/product4.jpg" width="100%" class="small-img" alt=""
+                        onclick="window.MainImg.src=this.src">
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <a href="#" class="brand-link" id="pro-brand">Visit the StitchCraft Store</a>
+            <h4 id="pro-name">Loading Gorgeous Embroidery...</h4>
+            <div class="ratings">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>4.5 (128 ratings)</span>
+            </div>
+            <div class="price-row">
+                <h2 id="pro-price">₹ 0.00 <span class="coupon">Apply 10% Coupon</span></h2>
+                <p style="font-size: 13px; color: #565959; margin: 5px 0;">Inclusive of all taxes</p>
+                <p style="font-size: 14px; color: #000;">EMI starts at ₹125. No Cost EMI available</p>
+            </div>
+            <div class="about-item">
+                <h5>About this item</h5>
+                <p id="pro-desc">Loading detailed description of this traditional work...</p>
+                <ul style="font-size: 14px; color: #333; margin-top: 15px; padding-left: 20px;">
+                    <li style="margin-bottom: 5px;">Pure Original Traditional Hand-craftwork</li>
+                    <li style="margin-bottom: 5px;">Premium quality threads and finish</li>
+                    <li style="margin-bottom: 5px;">Authentic Stich Craft collection</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="buy-box">
+            <span class="price" id="pro-price-box">₹ 0.00</span>
+            <span class="stock-status">In Stock</span>
+            <p style="font-size: 14px; margin-bottom: 10px; color: #565959;">FREE delivery <b>Monday, 10 March</b> on
+                your first order.</p>
+
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 5px; display: block;">Select Size:</label>
+            <select id="pro-size">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+            </select>
+
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 5px; display: block;">Quantity:</label>
+            <select id="pro-quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <button class="btn-amazon btn-cart" id="add-to-cart-btn">Add to Cart</button>
+            <button class="btn-amazon btn-buy" onclick="buyNow()">Buy Now</button>
+
+            <div class="policy-icons">
+                <div class="policy-item"><i class="fas fa-undo"></i>7 days return</div>
+                <div class="policy-item"><i class="fas fa-truck"></i>Fast Delivery</div>
+                <div class="policy-item"><i class="fas fa-shield-alt"></i>Handcrafted</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="copyright">
+            <p>@2026, Stich Craft EMBROIDERY TRADITIONAL WORK</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            if (productId) {
+                loadProductDetails(productId);
+            }
+        });
+    </script>
+</body>
+
+</html>

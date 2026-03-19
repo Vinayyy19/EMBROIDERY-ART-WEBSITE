@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Stich Craft EMBROIDERY</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #auth-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            background-color: #f0f2f5;
+            padding: 40px;
+        }
+
+        .auth-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .auth-card h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1a1a1a;
+            font-size: 32px;
+        }
+
+        .error-msg {
+            background: #ffe6e6;
+            color: #d8000c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            font-size: 14px;
+            border: 1px solid #ffbaba;
+        }
+
+        .auth-card input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .auth-card input:focus {
+            border-color: #8a2b8a;
+        }
+
+        .auth-card button {
+            width: 100%;
+            padding: 15px;
+            background: #8a2b8a;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .auth-card button:hover {
+            background: #6a1b6a;
+            transform: translateY(-2px);
+        }
+
+        .auth-card p {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .auth-card a {
+            color: #8a2b8a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <a href="Index.html"><img src="IMAGE/CraftLogo.png" class="logo" alt=""></a>
+        <ul id="navbar">
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="Shop.html">Shop</a></li>
+            <li><a class="active" href="Login.html">Login</a></li>
+        </ul>
+    </section>
+
+    <section id="auth-section">
+        <div class="auth-card">
+            <h2>Welcome Back</h2>
+            <div id="error-box" class="error-msg"></div>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>New to Stich Craft? <a href="Signup.html">Create Account</a></p>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="copyright">
+            <p>@2026, Stich Craft EMBROIDERY TRADITIONAL WORK</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errorBox = document.getElementById('error-box');
+            errorBox.style.display = 'none';
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    window.location.href = 'Index.html';
+                } else {
+                    errorBox.innerText = data.message || 'Invalid credentials. Please try again.';
+                    errorBox.style.display = 'block';
+                }
+            } catch (err) {
+                errorBox.innerText = 'Server error. Please try again later.';
+                errorBox.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Jari Work Embroidery",
+    "brand": "StitchCraft",
+    "price": 400,
+    "image": "IMAGE/product1.jpg",
+    "description": "Exquisite Jari Work Embroidery on premium fabric. Intricate designs with shimmering thread."
+  },
+  {
+    "id": 2,
+    "name": "Resham Work",
+    "brand": "StitchCraft",
+    "price": 500,
+    "image": "IMAGE/product2.jpg",
+    "description": "Beautiful Resham Work with traditional designs. Soft silk threads and vibrant colors."
+  },
+  {
+    "id": 3,
+    "name": "Neck Embroidery",
+    "brand": "StitchCraft",
+    "price": 750,
+    "image": "IMAGE/product3.jpg",
+    "description": "Intricate Neck Embroidery perfect for any ethnic wear. Elegant patterns that stand out."
+  },
+  {
+    "id": 4,
+    "name": "Jari Work Embroidery",
+    "brand": "StitchCraft",
+    "price": 600,
+    "image": "IMAGE/product4.jpg",
+    "description": "High-quality Jari Work Embroidery. Durable and stylish for all occasions."
+  },
+  {
+    "id": 5,
+    "name": "Neck Embroidery",
+    "brand": "StitchCraft",
+    "price": 450,
+    "image": "IMAGE/product5.jpg",
+    "description": "Elegant Neck Embroidery. Simple yet sophisticated design."
+  },
+  {
+    "id": 6,
+    "name": "Neck Embroidery",
+    "brand": "StitchCraft",
+    "price": 650,
+    "image": "IMAGE/product6.jpg",
+    "description": "Classic Neck Embroidery. Timeless appeal with traditional motifs."
+  },
+  {
+    "id": 7,
+    "name": "Raw Embroidery",
+    "brand": "StitchCraft",
+    "price": 1000,
+    "image": "IMAGE/product7.jpg",
+    "description": "Authentic Raw Embroidery. Handcrafted for a unique and rustic look."
+  },
+  {
+    "id": 8,
+    "name": "Back Embroidery",
+    "brand": "StitchCraft",
+    "price": 500,
+    "image": "IMAGE/product8.jpg",
+    "description": "Stylish Back Embroidery. Makes a grand entrance with detailed work."
+  },
+  {
+    "id": 9,
+    "name": "Zardosi Work",
+    "brand": "StitchCraft",
+    "price": 1200,
+    "image": "IMAGE/product9.jpg",
+    "description": "Premium Zardosi work with metallic threads and beads. Very heavy and luxurious."
+  },
+  {
+    "id": 10,
+    "name": "Mirror Work",
+    "brand": "StitchCraft",
+    "price": 850,
+    "image": "IMAGE/product10.jpg",
+    "description": "Traditional Mirror work from Kutch. Sparkling and colorful."
+  },
+  {
+    "id": 11,
+    "name": "Kashmiri Embroidery",
+    "brand": "StitchCraft",
+    "price": 1500,
+    "image": "IMAGE/product11.jpg",
+    "description": "Classic Kashmiri Sozni work. Very fine and detailed floral patterns."
+  },
+  {
+    "id": 12,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product12.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 13,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product13.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 14,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product14.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 15,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product15.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 16,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product16.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 17,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product17.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 18,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product18.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 19,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/Product19.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  },
+  {
+    "id": 20,
+    "name": "Chikan Work",
+    "brand": "StitchCraft",
+    "price": 950,
+    "image": "IMAGE/product20.jpg",
+    "description": "Elegant Lucknawi Chikankari. Subtle thread work on light fabrics."
+  }
+]
