@@ -107,7 +107,6 @@ function initScrollReveal() {
     reveals.forEach(el => observer.observe(el));
 }
 
-
 async function checkAuth() {
     try {
         const res = await fetch('/api/profile');
@@ -122,17 +121,12 @@ async function checkAuth() {
     }
 }
 
-function updateNavbar(user) {cart.html
+function updateNavbar(user) {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
 
     const existingAuth = navbar.querySelectorAll('.auth-link');
     existingAuth.forEach(el => el.remove());
-
-    const bagIcons = document.querySelectorAll('a[href="profile.html"] i.far.fa-shopping-bag');
-    bagIcons.forEach(icon => {
-        icon.parentElement.href = 'Cart.html';
-    });
 
     if (user) {
         navbar.insertAdjacentHTML('beforeend', `
@@ -161,22 +155,22 @@ async function loadProducts(containerId) {
         const res = await fetch('/api/products');
         const products = await res.json();
 
-        let displayProducts = products.slice(0, 21);
+        const displayProducts = products.slice(0, 21);
 
         container.innerHTML = displayProducts.map(p => `
-            <div class="pro reveal" onclick="window.location.href='sproduct.html?id=${p.id}'">
+            <div class="pro" onclick="window.location.href='sproduct.html?id=${p.id}'">
                 <div class="img-container">
                     <img src="${p.image}" alt="${p.name}">
                 </div>
                 <div class="des">
-                    <span>${p.brand}</span>
+                    <span>${p.brand || p.category || ''}</span>
                     <h5>${p.name}</h5>
                     <h4>Rs.${p.price}</h4>
                 </div>
             </div>
         `).join('');
 
-        initScrollReveal();
+        setTimeout(() => initScrollReveal(), 100);
     } catch (err) {
         console.error('Error loading products:', err);
     }
@@ -200,7 +194,7 @@ async function loadProductDetails(productId) {
         if (proPrice) proPrice.innerText = `₹ ${product.price}.00`;
         if (proPriceBox) proPriceBox.innerText = `₹ ${product.price}.00`;
         if (proDesc) proDesc.innerText = product.description;
-        if (proBrand) proBrand.innerText = `Visit the ${product.brand} Store`;
+        if (proBrand) proBrand.innerText = `Visit the ${product.brand || product.category} Store`;
 
         const smallImgs = document.querySelectorAll('.small-img');
         if (smallImgs.length > 0) {
@@ -211,7 +205,6 @@ async function loadProductDetails(productId) {
             cartBtn.onclick = () => {
                 const qtySelect = document.getElementById('pro-quantity');
                 const qty = qtySelect ? qtySelect.value : 1;
-
                 addToCart(product.id, qty, true);
             };
         }
@@ -222,7 +215,7 @@ async function loadProductDetails(productId) {
         console.error('Error loading product details:', err);
     }
 }
-cart.html
+
 async function addToCart(productId, quantity = 1, redirect = false) {
     try {
         const res = await fetch('/api/cart/add', {
@@ -233,13 +226,13 @@ async function addToCart(productId, quantity = 1, redirect = false) {
         if (res.ok) {
             showNotification('Item added to cart successfully! ✨');
             if (redirect) {
-                setTimeout(() => window.location.href = 'Cart.html', 800);
+                setTimeout(() => window.location.href = 'cart.html', 800); 
             }
         } else {
             const data = await res.json();
             if (res.status === 401) {
                 showNotification('Please login to continue.', 'error');
-                setTimeout(() => window.location.href = 'login.html', 1000);
+                setTimeout(() => window.location.href = 'login.html', 1000); 
             } else {
                 showNotification(data.message || 'Failed to add item.', 'error');
             }
@@ -254,9 +247,16 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
     initScrollReveal();
     if (document.getElementById('product1')) {
-        if (!window.location.pathname.includes('sproduct.html')) {
+        if (!window.location.pathname.includes('sproduct.html')) { 
             loadProducts('product1');
         }
+    }
+
+    // ✅ Load product details on sproduct.html
+    if (window.location.pathname.includes('sproduct.html')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        if (productId) loadProductDetails(productId);
     }
 });
 
@@ -266,7 +266,6 @@ async function processCheckout() {
         const data = await res.json();
 
         if (res.ok) {
-
             showNotification('Order placed successfully! ✨');
 
             const cartTable = document.querySelector('.cart-table');
@@ -295,7 +294,7 @@ async function buyNow() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
     const qtySelect = document.getElementById('pro-quantity');
-    const quantity = qtySelect ? qtycart.htmllue : 1;
+    const quantity = qtySelect ? qtySelect.value : 1;
 
     if (!productId) {
         showNotification('Invalid product.', 'error');
@@ -310,7 +309,7 @@ async function buyNow() {
         });
 
         if (res.ok) {
-            window.location.href = 'Cart.html';
+            window.location.href = 'cart.html';
         } else {
             const data = await res.json();
             if (res.status === 401) {
